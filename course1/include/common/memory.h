@@ -90,4 +90,6 @@ void set_all(char * ptr, char value, unsigned int size);
  */
 void clear_all(char * ptr, unsigned int size);
 
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
 #endif /* __MEMORY_H__ */

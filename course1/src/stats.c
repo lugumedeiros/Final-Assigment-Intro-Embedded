@@ -2,9 +2,16 @@
 #include "stats.h"
 #include <stdbool.h> // for bool data type
 #include <stdlib.h> // for qsort() 
+#include "platform.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
+
+#ifdef VERBOSE
+#define c_Allow_verbose true
+#else
+#define c_Allow_verbose false
+#endif
 
 void main() {
 
@@ -60,7 +67,7 @@ double find_mean_double (unsigned char array[], unsigned int size) {
     
     for (unsigned int i = 0; i < size; i++) {
        sum += array[i];
-       //printf("i = %d, and sum = %d \n",array[i], sum);
+       //PRINTF("i = %d, and sum = %d \n",array[i], sum);
     }
     double mean_value = (double)sum / (double)size;
     return mean_value;
@@ -121,11 +128,13 @@ unsigned char find_median (unsigned char array[], unsigned int size){
 
 void print_array(unsigned char array[], unsigned int size) {
 /*  simple function that will print arrey to screen */
-    printf("Array: [ ");
-    for (unsigned int i = 0; i < size; i++) {
-        printf("%d ",array[i]);
+    if (c_Allow_verbose) {
+        PRINTF("Array: [ ");
+        for (unsigned int i = 0; i < size; i++) {
+            PRINTF("%d ",array[i]);
+        }
+        PRINTF("]\n");
     }
-    printf("]\n");
 }
 
 void print_statistics(unsigned char array[], unsigned int size, bool alow_float){
@@ -134,17 +143,17 @@ void print_statistics(unsigned char array[], unsigned int size, bool alow_float)
     unsigned array_size = size;
     unsigned char max_value = find_maximum(array, array_size);
     unsigned char min_value = find_minimum(array, array_size);
-    printf("Maximum: %d\nMinimum: %d\n", max_value,
+    PRINTF("Maximum: %d\nMinimum: %d\n", max_value,
           min_value);
     
     if (alow_float) {
         double mean_value_double = find_mean_double(array, array_size);
-        printf("Mean: %lf\n", mean_value_double);
+        PRINTF("Mean: %lf\n", mean_value_double);
     } else {
         unsigned int mean_value_int = find_mean(array, array_size, true);
-        printf("Mean: %d\n", mean_value_int);
+        PRINTF("Mean: %d\n", mean_value_int);
     }
     unsigned int median_value = find_median(array, array_size);
-    printf("Median: %d\n", median_value);
+    PRINTF("Median: %d\n", median_value);
 
 }

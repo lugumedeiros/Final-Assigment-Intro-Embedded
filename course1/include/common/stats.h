@@ -25,6 +25,7 @@
 #include "stats.h"
 #include <stdbool.h> // for bool data type
 #include <stdlib.h> // for qsort() 
+#include "platform.h"
 
 
 /* Add Your Declarations and Function Comments here */ 

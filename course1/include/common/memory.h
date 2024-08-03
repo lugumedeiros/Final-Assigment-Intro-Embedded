@@ -90,6 +90,76 @@ void set_all(char * ptr, char value, unsigned int size);
  */
 void clear_all(char * ptr, unsigned int size);
 
+
+
 uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+/**
+ * This function will move a block of size <lenght> from src to dst addresses
+  src has the address of the first item to be moved and dst has the address 
+  of the first item that will be moved if fronwarded.
+* @param src address source
+* @param dst address destination
+* @param length memory length, measured from source to source+length
+* 
+* @return destination address
+*/
+
+uint8_t *my_memcopy(uint8_t* src, uint8_t* dst, size_t length);
+/**
+ * This funciton does the same as my_memmove (move a block of data), but it will
+  not test if it's a safe operation, forward movement always
+* @param src address source
+* @param dst address destination
+* @param length memory length, measured from source to source+length
+* 
+* @return destination address
+*/
+
+int8_t * my_memset(uint8_t * src, size_t length, uint8_t value);
+/**
+ * this function will set all values inside the selected memory to <value>
+* @param src address source
+* @param length memory length, measured from source to source+length
+* @param value a value that will be used to set memory
+* 
+* @return source address
+*/
+
+uint8_t * my_memzero(uint8_t * src, size_t length);
+/**
+ * This function will use memset as base to set all values to zero,
+    the return of this fucntion is the start of the same
+* @param src address source
+* @param length memory length, measured from source to source+length
+* 
+* @return source address
+*/
+
+uint8_t * my_reverse(uint8_t * src, size_t length);
+/**
+ * This function reverses all values inside of the selected memory, even or 
+    odd. This is achieved by swapping from outer pairs to the inner one
+* @param src address source
+* @param length memory length, measured from source to source+length
+* 
+* @return source address
+*/
+
+int32_t * reserve_words(size_t length);
+/**
+ * Creates a malloc of length size
+* @param length memory length, measured from source to source+length
+* 
+* @return source address
+*/
+
+void free_words(int32_t * src);
+/**
+ * Frees a malloc
+* @param src address source
+* 
+* @return void
+*/
+
 
 #endif /* __MEMORY_H__ */

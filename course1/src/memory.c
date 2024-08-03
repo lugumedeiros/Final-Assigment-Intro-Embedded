@@ -132,13 +132,15 @@ uint8_t * my_reverse(uint8_t * src, size_t length) {
 }
 
 int32_t * reserve_words(size_t length) {
-  
+/* Creates a malloc of length size */
+
   size_t size_bytes = length * sizeof(int32_t);
   int32_t* ptr = (int32_t *)malloc(size_bytes);
   return ptr;
 }
 
 void free_words(int32_t * src){
+/* Frees a malloc */
   free (src);
   src = NULL;
 }
